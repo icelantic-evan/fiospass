@@ -67,3 +67,7 @@ p {
     border-color: #172d35;
     color: #fff;
 }
+
+.page-footer {
+    background-color: #183c47 !important;
+}

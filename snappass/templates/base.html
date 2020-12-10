@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link href="{{ config.STATIC_URL }}/snappass/css/custom.css" rel="stylesheet">
+    <link rel="icon" href="{{ config.STATIC_URL }}/snappass/img/favicon.png" sizes="32x32">
+
 </head>
 <body>
     <nav class="navbar navbar-fios navbar-static-top">
@@ -22,6 +24,8 @@
         </div>
     </nav>
 
+    {% block content %}{% endblock %}
+
     <footer class="page-footer font-small">
         <div class="footer-copyright text-center py-3">
             © 2020 Copyright:
@@ -29,7 +33,6 @@
         </div>
     </footer>
 
-    {% block content %}{% endblock %}
     <script src="{{ config.STATIC_URL }}/jquery/jquery-1.12.4.min.js"></script>
     <script src="{{ config.STATIC_URL }}/bootstrap/js/bootstrap.min.js"></script>
     {% block js %}{% endblock %}
