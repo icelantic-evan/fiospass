@@ -89,7 +89,7 @@ def parse_token(token):
 
 
 @check_redis_alive
-def set_password(password, ttl):
+def set_password(password):
     """
     Encrypt and store the password for the specified lifetime.
 
