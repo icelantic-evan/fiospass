@@ -143,14 +143,14 @@ def clean_input():
     if empty(request.form.get('password', '')):
         abort(400)
 
-    if empty(request.form.get('ttl', '')):
-        abort(400)
+    #if empty(request.form.get('ttl', '')):
+    #   abort(400)
 
-    time_period = request.form['ttl'].lower()
-    if time_period not in TIME_CONVERSION:
-        abort(400)
+    #time_period = request.form['ttl'].lower()
+    #if time_period not in TIME_CONVERSION:
+    #    abort(400)
 
-    return TIME_CONVERSION[time_period], request.form['password']
+    #return TIME_CONVERSION[time_period], request.form['password']
 
 
 @app.route('/', methods=['GET'])
@@ -173,7 +173,7 @@ def handle_password():
     return render_template('confirm.html', password_link=link)
 
 
-@app.route('/<password_key>', methods=['GET'])
+@app.route('/password/<password_key>', methods=['GET'])
 def preview_password(password_key):
     password_key = url_unquote_plus(password_key)
     if not password_exists(password_key):
@@ -182,7 +182,7 @@ def preview_password(password_key):
     return render_template('preview.html')
 
 
-@app.route('/<password_key>', methods=['POST'])
+@app.route('/password/<password_key>', methods=['POST'])
 def show_password(password_key):
     password_key = url_unquote_plus(password_key)
     password = get_password(password_key)
