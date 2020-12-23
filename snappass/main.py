@@ -173,7 +173,7 @@ def handle_password():
     return render_template('confirm.html', password_link=link)
 
 
-@app.route('/password/<password_key>', methods=['GET'])
+@app.route('/<password_key>', methods=['GET'])
 def preview_password(password_key):
     password_key = url_unquote_plus(password_key)
     if not password_exists(password_key):
@@ -182,7 +182,7 @@ def preview_password(password_key):
     return render_template('preview.html')
 
 
-@app.route('/password/<password_key>', methods=['POST'])
+@app.route('/<password_key>', methods=['POST'])
 def show_password(password_key):
     password_key = url_unquote_plus(password_key)
     password = get_password(password_key)
