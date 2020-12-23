@@ -98,7 +98,7 @@ def set_password(password, ttl):
     """
     storage_key = REDIS_PREFIX + uuid.uuid4().hex
     encrypted_password, encryption_key = encrypt(password)
-    redis_client.setex(storage_key, ttl, encrypted_password)
+    redis_client.setex(storage_key, 172800, encrypted_password)
     encryption_key = encryption_key.decode('utf-8')
     token = TOKEN_SEPARATOR.join([storage_key, encryption_key])
     return token
@@ -143,14 +143,14 @@ def clean_input():
     if empty(request.form.get('password', '')):
         abort(400)
 
-    #if empty(request.form.get('ttl', '')):
-    #   abort(400)
+    if empty(request.form.get('ttl', '')):
+       abort(400)
 
-    #time_period = request.form['ttl'].lower()
-    #if time_period not in TIME_CONVERSION:
-    #    abort(400)
+    time_period = request.form['ttl'].lower()
+    if time_period not in TIME_CONVERSION:
+        abort(400)
 
-    #return TIME_CONVERSION[time_period], request.form['password']
+    return TIME_CONVERSION[time_period], request.form['password']
 
 
 @app.route('/', methods=['GET'])
@@ -161,7 +161,7 @@ def index():
 @app.route('/', methods=['POST'])
 def handle_password():
     ttl, password = clean_input()
-    token = set_password(password, 86400)
+    token = set_password(password)
 
     if NO_SSL:
         base_url = request.url_root
