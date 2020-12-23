@@ -179,7 +179,7 @@ def preview_password(password_key):
     if not password_exists(password_key):
         abort(404)
 
-    return render_template('../preview.html')
+    return render_template('preview.html')
 
 
 @app.route('/password/<password_key>', methods=['POST'])
@@ -189,7 +189,7 @@ def show_password(password_key):
     if not password:
         abort(404)
 
-    return render_template('../password.html', password=password)
+    return render_template('password.html', password=password)
 
 
 # Custom 404 Error
