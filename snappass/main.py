@@ -192,6 +192,11 @@ def show_password(password_key):
     return render_template('password.html', password=password)
 
 
+# Custom 404 Error
+@app.errorhandler(404)
+def not_found(e):
+  return render_template("404.html")
+
 @check_redis_alive
 def main():
     app.run(host='0.0.0.0')
