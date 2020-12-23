@@ -160,7 +160,7 @@ def index():
 
 @app.route('/', methods=['POST'])
 def handle_password():
-    ttl, password = clean_input()
+    password = request.form['password']
     token = set_password(password)
 
     if NO_SSL:
