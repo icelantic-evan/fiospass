@@ -164,9 +164,9 @@ def handle_password():
     token = set_password(password)
 
     if NO_SSL:
-        base_url = request.url_root
+        base_url = request.url_root + "/password/"
     else:
-        base_url = request.url_root.replace("http://", "https://")
+        base_url = request.url_root.replace("http://", "https://") + "/password/"
     if URL_PREFIX:
         base_url = base_url + URL_PREFIX.strip("/") + "/"
     link = base_url + url_quote_plus(token)
