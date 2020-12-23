@@ -164,16 +164,16 @@ def handle_password():
     token = set_password(password)
 
     if NO_SSL:
-        base_url = request.url_root + "password/"
+        base_url = request.url_root
     else:
-        base_url = request.url_root.replace("http://", "https://") + "password/"
+        base_url = request.url_root.replace("http://", "https://")
     if URL_PREFIX:
         base_url = base_url + URL_PREFIX.strip("/") + "/"
     link = base_url + url_quote_plus(token)
     return render_template('confirm.html', password_link=link)
 
 
-@app.route('/password/<password_key>', methods=['GET'])
+@app.route('/<password_key>', methods=['GET'])
 def preview_password(password_key):
     password_key = url_unquote_plus(password_key)
     if not password_exists(password_key):
@@ -182,7 +182,7 @@ def preview_password(password_key):
     return render_template('preview.html')
 
 
-@app.route('/password/<password_key>', methods=['POST'])
+@app.route('/<password_key>', methods=['POST'])
 def show_password(password_key):
     password_key = url_unquote_plus(password_key)
     password = get_password(password_key)
