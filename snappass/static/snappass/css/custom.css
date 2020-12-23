@@ -70,4 +70,12 @@ p {
 
 .page-footer {
     background-color: #183c47 !important;
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px 0;
+    color: #fff
 }
+
+    .page-footer a {
+        color: #fff;
+        text-decoration: underline;
+    }

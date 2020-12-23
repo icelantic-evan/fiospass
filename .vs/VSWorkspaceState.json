@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\snappass",
+    "\\snappass\\static",
+    "\\snappass\\static\\snappass",
+    "\\snappass\\static\\snappass\\img",
+    "\\snappass\\templates"
   ],
+  "SelectedNode": "\\snappass\\static\\snappass\\img",
   "PreviewInSolutionExplorer": false
 }
