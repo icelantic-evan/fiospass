@@ -1,4 +1,5 @@
 .project
+.vs
 *.rdb
 junit*xml
 
