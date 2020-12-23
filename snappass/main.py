@@ -164,9 +164,9 @@ def handle_password():
     token = set_password(password)
 
     if NO_SSL:
-        base_url = request.url_root + "/password/"
+        base_url = request.url_root + "password/"
     else:
-        base_url = request.url_root.replace("http://", "https://") + "/password/"
+        base_url = request.url_root.replace("http://", "https://") + "password/"
     if URL_PREFIX:
         base_url = base_url + URL_PREFIX.strip("/") + "/"
     link = base_url + url_quote_plus(token)
@@ -179,7 +179,7 @@ def preview_password(password_key):
     if not password_exists(password_key):
         abort(404)
 
-    return render_template('preview.html')
+    return render_template('../preview.html')
 
 
 @app.route('/password/<password_key>', methods=['POST'])
@@ -189,7 +189,7 @@ def show_password(password_key):
     if not password:
         abort(404)
 
-    return render_template('password.html', password=password)
+    return render_template('../password.html', password=password)
 
 
 # Custom 404 Error
