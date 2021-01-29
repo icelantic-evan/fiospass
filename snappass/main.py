@@ -98,7 +98,7 @@ def set_password(password):
     """
     storage_key = REDIS_PREFIX + uuid.uuid4().hex
     encrypted_password, encryption_key = encrypt(password)
-    redis_client.setex(storage_key, 172800, encrypted_password)
+    redis_client.setex(storage_key, 259200, encrypted_password)
     encryption_key = encryption_key.decode('utf-8')
     token = TOKEN_SEPARATOR.join([storage_key, encryption_key])
     return token
